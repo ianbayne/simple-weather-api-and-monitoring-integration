@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.openweathermap.org/data/2.5/weather?appid=<API_KEY>&q=Tokyo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Traceparent:
+      - 00-9f996a942e3425a9c83ca31f9ac1edab-edd12a4066840c5e-01
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty
+      Date:
+      - Tue, 07 May 2024 14:59:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '487'
+      Connection:
+      - keep-alive
+      X-Cache-Key:
+      - "/data/2.5/weather?q=tokyo"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Methods:
+      - GET, POST
+    body:
+      encoding: UTF-8
+      string: '{"coord":{"lon":139.6917,"lat":35.6895},"weather":[{"id":500,"main":"Rain","description":"light
+        rain","icon":"10n"}],"base":"stations","main":{"temp":292.75,"feels_like":292.88,"temp_min":291.82,"temp_max":293.5,"pressure":1003,"humidity":81},"visibility":10000,"wind":{"speed":0.51,"deg":0},"rain":{"1h":0.13},"clouds":{"all":75},"dt":1715093702,"sys":{"type":2,"id":268395,"country":"JP","sunrise":1715024592,"sunset":1715074341},"timezone":32400,"id":1850144,"name":"Tokyo","cod":200}'
+  recorded_at: Tue, 07 May 2024 14:59:09 GMT
+recorded_with: VCR 6.2.0
