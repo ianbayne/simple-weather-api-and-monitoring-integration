@@ -1,25 +1,25 @@
 class GetWeatherData
   include Callable
 
-  def initialize(city)
+  def initialize(city, client = Clients::OpenWeatherMap)
     @city = city
+    @client = client
   end
 
   def call
-    @result = Clients::OpenWeatherMap.call(@city)
-    OpenStruct.new(
-      success?: success?,
-      payload: @result[:payload],
-      error: @result[:error],
-      error_status_code: error_status_code
-    )
-  end
-
-  def success?
-    @result[:error].nil?
-  end
-
-  def error_status_code
-    @result[:error_status_code]
+    result = @client.call(@city)
+    
+    if result[:error].nil?
+      OpenStruct.new(
+        success?: true,
+        payload: result[:payload],
+      )
+    else
+      OpenStruct.new(
+        success?: false,
+        error: result[:error],
+        error_status_code: result[:error_status_code]
+      )
+    end
   end
 end
