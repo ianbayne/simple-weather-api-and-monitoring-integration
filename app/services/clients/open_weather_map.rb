@@ -24,9 +24,9 @@ class Clients::OpenWeatherMap
 
     str = uri.open.read
     data = JSON.parse(str)
-    temperature = data["main"]["temp"]
-    humidity = data["main"]["humidity"]
-    wind_speed = data["wind"]["speed"]
+    temperature = data.dig("main", "temp")
+    humidity = data.dig("main", "humidity")
+    wind_speed = data.dig("wind", "speed")
 
     { payload: { temperature:, humidity:, wind_speed: }}
   rescue OpenURI::HTTPError => error
