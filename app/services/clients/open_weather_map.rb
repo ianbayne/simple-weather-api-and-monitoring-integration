@@ -23,7 +23,7 @@ class Clients::OpenWeatherMap
     uri.query = URI.encode_www_form(params)
 
     str = uri.open.read
-    data = JSON.parse(str)
+    data = JSON.parse(str) # TODO: What should happen if the str cannot be parsed by JSON? Rescue from JSON::ParserError?
     temperature = data.dig("main", "temp")
     humidity = data.dig("main", "humidity")
     wind_speed = data.dig("wind", "speed")
